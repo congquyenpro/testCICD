@@ -1,0 +1,11 @@
+This is a Docker Compose file that defines a multi-container environment consisting of an Nginx web server, a PHP application server, a MySQL database server, and a phpMyAdmin container for managing the database.
+
+The Nginx container is built from a Dockerfile located in the ./docker/nginx directory, which specifies the configuration file and other settings for the Nginx server. The Nginx container is linked to the PHP container using the links parameter and is configured to listen on port 80 and serve files from the ./src directory on the host machine.
+
+The PHP container is built from a Dockerfile located in the ./docker/php directory, which installs and configures PHP and other required components. The PHP container is configured to serve files from the ./src directory on the host machine and is also linked to the Nginx container.
+
+The MySQL container is based on the mysql:latest image and is configured with default values for the MySQL user, root password, database name, and other settings. The container is also configured to use a persistent volume named my-db for storing data.
+
+The phpMyAdmin container is based on the phpmyadmin/phpmyadmin:latest image and is configured to connect to the MySQL container using the PMA_HOST parameter and the db container name. The container is also configured with the root password and other settings for accessing the database.
+
+Overall, this Docker Compose file defines a complete web development environment that can be easily deployed and managed using Docker.
